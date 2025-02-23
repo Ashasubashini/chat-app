@@ -57,21 +57,25 @@ export const login = async (req, res) => {
     try {
         const user = await User.findOne({email});
 
-        if (!user){
+        if (!user) {
             return res.status(404).json({message: "Invalid credentials"});
         }
-        const isPasswordCorrect = await bcrypt.compare(password, user.password)
+
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
         if (!isPasswordCorrect) {
             return res.status(400).json({message: "Invalid credentials"});
         }
 
-        generateToken(user._id, res);
+        // Generate the token
+        const token = generateToken(user._id, res); 
 
+        // Send the token along with user details
         res.status(200).json({
             _id: user._id,
             fullname: user.fullname,
             email: user.email,
             profilePic: user.profilePic,
+            token: token, // Include the token in the response
         });
         
     } catch (error) {
@@ -79,6 +83,7 @@ export const login = async (req, res) => {
         res.status(500).json({message: "internal server error"});
     }
 }
+
 
 export const logout = (req, res) => { 
     try {

@@ -1,4 +1,4 @@
-import main from '../assets/main.png'
+import main from '../assets/main.png';
 
 const AuthImagePattern = ({ title, subtitle }) => {
     return (
@@ -8,7 +8,7 @@ const AuthImagePattern = ({ title, subtitle }) => {
                     {[...Array(9)].map((_, i) => (
                         <div
                             key={i}
-                            className={`aspect-square rounded-2xl bg-gradient-to-br from-blue-200 to-white ${
+                            className={`aspect-square rounded-2xl bg-gradient-to-br from-gray-500 to-gray-700 ${
                                 i % 2 === 0 ? "animate-pulse" : ""
                             }`}
                         />

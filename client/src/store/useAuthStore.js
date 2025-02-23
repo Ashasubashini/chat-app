@@ -36,6 +36,48 @@ export const useAuthStore = create((set) => ({
         } finally {
             set({ isSignedIn: false });
         }
+    },
+
+    login: async (data) => {
+        set({ isLoggingIn: true });
+    
+        try {
+            const res = await axiosInstance.post("auth/login", data);
+            console.log("Login API Response:", res.data); 
+    
+            if (res.data.token) {
+                set({
+                    authUser: res.data, 
+                    token: res.data.token, 
+                    isAuthenticated: true,
+                });
+    
+                localStorage.setItem("authToken", res.data.token);
+                toast.success("Login successful!");
+            } else {
+                console.warn("Token missing in response:", res.data);
+                throw new Error("Authentication failed. No token received.");
+            }
+        } catch (error) {
+            console.error("Login Error Response:", error.response?.data || error.message);
+            toast.error(error.response?.data?.message || "Failed to login");
+        } finally {
+            set({ isLoggingIn: false });
+        }
+    },
+    
+    
+    
+    
+
+    logout: async() => {
+        try {
+            await axiosInstance.post("/auth/logout");
+            set({ authUser:null});
+            toast.success("logout successfully");
+        } catch (error) {
+            toast.error(error.response.data.message)
+        }
     }
 
 }));
