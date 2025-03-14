@@ -12,10 +12,21 @@ import {app, server} from './lib/socket.js';
 
 dotenv.config();
 
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://chat-app-client-five-ruddy.vercel.app"
+];
+
 app.use(cors({
-    origin: "http://localhost:5173", 
-    credentials: true,  
-    methods: ["GET", "POST", "PUT", "DELETE"],  
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
 app.use(express.json({ limit: "50mb" })); 
