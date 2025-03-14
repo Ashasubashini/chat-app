@@ -44,13 +44,13 @@ const Profile = () => {
   };
 
   return (
-    <div className="h-screen bg-[#0A192F] pt-20 overflow-auto">
+    <div className="h-screen pt-20 overflow-auto">
       <div className="max-w-2xl mx-auto p-4 py-8">
         {/* Card with a slightly lighter blue background */}
-        <div className="bg-[#112240] rounded-xl p-6 shadow-lg space-y-8">
+        <div className="rounded-xl p-6 shadow-lg space-y-8">
           <div className="text-center">
-            <h1 className="text-3xl font-semibold text-white">Profile</h1>
-            <p className="mt-2 text-blue-200">Your profile information</p>
+            <h1 className="text-3xl font-semibold">Profile</h1>
+            <p className="mt-2">Your profile information</p>
           </div>
 
           {/* Avatar upload section */}
@@ -59,15 +59,15 @@ const Profile = () => {
               <img
                 src={selectedImg || authUser.profilePic || avatar} // Use avatar import here
                 alt="Profile"
-                className="size-32 rounded-full object-cover border-4 border-blue-600"
+                className="size-32 rounded-full object-cover border-4"
               />
               <label
                 htmlFor="avatar-upload"
-                className={`absolute bottom-0 right-0 bg-blue-600 hover:scale-105 p-2 rounded-full cursor-pointer transition-all duration-200 ${
+                className={`absolute bottom-0 right-0 hover:scale-105 p-2 rounded-full cursor-pointer transition-all duration-200 ${
                   isUpdatingProfile ? "animate-pulse pointer-events-none" : ""
                 }`}
               >
-                <Camera className="w-5 h-5 text-white" />
+                <Camera className="w-5 h-5" />
                 <input
                   type="file"
                   id="avatar-upload"
@@ -78,7 +78,7 @@ const Profile = () => {
                 />
               </label>
             </div>
-            <p className="text-sm text-blue-200 mt-2">
+            <p className="text-sm mt-2">
               {isUpdatingProfile ? "Uploading..." : "Click the camera icon to update your photo"}
             </p>
           </div>
@@ -86,7 +86,7 @@ const Profile = () => {
           {/* Profile information */}
           <div className="space-y-6">
             <div className="space-y-1.5">
-              <div className="text-sm text-blue-200 flex items-center gap-2">
+              <div className="text-sm flex items-center gap-2">
                 <User className="w-4 h-4" />
                 Full Name
               </div>
@@ -94,12 +94,12 @@ const Profile = () => {
                 type="text"
                 value={authUser?.fullname}
                 readOnly
-                className="px-4 py-2.5 bg-blue-100 rounded-lg border border-blue-300 text-blue-900 w-full"
+                className="px-4 py-2.5 rounded-lg border w-full"
               />
             </div>
 
             <div className="space-y-1.5">
-              <div className="text-sm text-blue-200 flex items-center gap-2">
+              <div className="text-sm flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                 Email Address
               </div>
@@ -107,16 +107,16 @@ const Profile = () => {
                 type="email"
                 value={authUser?.email}
                 readOnly
-                className="px-4 py-2.5 bg-blue-100 rounded-lg border border-blue-300 text-blue-900 w-full"
+                className="px-4 py-2.5 rounded-lg border w-full"
               />
             </div>
           </div>
 
           {/* Account Information */}
-          <div className="mt-6 bg-[#0A192F] rounded-xl p-6">
-            <h2 className="text-lg font-medium text-white mb-4">Account Information</h2>
-            <div className="space-y-3 text-sm text-blue-200">
-              <div className="flex items-center justify-between py-2 border-b border-zinc-700">
+          <div className="mt-6 rounded-xl p-6">
+            <h2 className="text-lg font-medium mb-4">Account Information</h2>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-center justify-between py-2 border-b">
                 <span>Member Since</span>
                 <span>{authUser.createdAt?.split("T")[0]}</span>
               </div>

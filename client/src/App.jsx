@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Setting from './pages/Setting';
-import Profile from './pages/profile';
+import Profile from './pages/Profile';
 import { useAuthStore } from './store/useAuthStore';
 import { useThemeStore } from './store/useThemeStore';
 import {Loader} from 'lucide-react';
