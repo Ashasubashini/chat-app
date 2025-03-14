@@ -41,7 +41,9 @@ const Navbar = () => {
 
             {authUser && (
                 <div className="fixed bottom-6 left-5 text-white">
-                    <FiSettings className="text-lg cursor-pointer hover:text-gray-400 transition duration-200" />
+                    <Link to="/setting">
+                        <FiSettings className="text-lg cursor-pointer hover:text-gray-400 transition duration-200" />
+                    </Link>
                 </div>
             )}
         </div>

@@ -1,1 +1,37 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+html[data-theme="light"],
+html[data-theme="dark"],
+html[data-theme="cupcake"],
+html[data-theme="bumblebee"],
+html[data-theme="emerald"],
+html[data-theme="corporate"],
+html[data-theme="synthwave"],
+html[data-theme="retro"],
+html[data-theme="cyberpunk"],
+html[data-theme="valentine"],
+html[data-theme="halloween"],
+html[data-theme="garden"],
+html[data-theme="forest"],
+html[data-theme="aqua"],
+html[data-theme="lofi"],
+html[data-theme="pastel"],
+html[data-theme="fantasy"],
+html[data-theme="wireframe"],
+html[data-theme="black"],
+html[data-theme="luxury"],
+html[data-theme="dracula"],
+html[data-theme="cmyk"],
+html[data-theme="autumn"],
+html[data-theme="business"],
+html[data-theme="acid"],
+html[data-theme="lemonade"],
+html[data-theme="night"],
+html[data-theme="coffee"],
+html[data-theme="winter"],
+html[data-theme="dim"],
+html[data-theme="nord"],
+html[data-theme="sunset"] {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
