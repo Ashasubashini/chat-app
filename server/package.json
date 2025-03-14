@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "build" : "npm install"
+    "build": "npm install"
   },
   "keywords": [],
   "author": "",
@@ -15,8 +15,7 @@
   "dependencies": {
     "@cloudinary/react": "^1.13.1",
     "@cloudinary/url-gen": "^1.21.0",
-    "bcrypt": "^5.1.1",
-    "bcryptjs": "^3.0.1",
+    "bcryptjs": "^3.0.2",
     "cloudinary": "^2.5.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
