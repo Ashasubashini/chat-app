@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "proxy" : "https://chat-app-server-lemon.vercel.app",
   "dependencies": {
     "@tailwindcss/vite": "^4.0.7",
     "axios": "^1.7.9",
