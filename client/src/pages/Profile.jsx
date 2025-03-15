@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Camera, Mail, User } from "lucide-react";
-import avatar from "../assets/avatar.png"; // Ensure correct path for avatar.png
-
+import avatar from "../assets/avatar.png"; 
 const Profile = () => {
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
   const [selectedImg, setSelectedImg] = useState(null);
@@ -11,14 +10,12 @@ const Profile = () => {
     const file = e.target.files[0];
     if (!file) return;
   
-    // Validate file type
     if (!file.type.startsWith("image/")) {
       alert("Please upload a valid image file (PNG, JPG, JPEG).");
       return;
     }
   
-    // Validate file size (Example: 2MB limit)
-    const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+    const maxSize = 2 * 1024 * 1024; 
     if (file.size > maxSize) {
       alert("File size should not exceed 2MB.");
       return;
@@ -34,7 +31,7 @@ const Profile = () => {
         setSelectedImg(base64Image);
         await updateProfile({ profilePic: base64Image });
       } catch (error) {
-        console.error("Image upload failed", error);
+        console.error("Image failed to upload", error);
       }
     };
   
