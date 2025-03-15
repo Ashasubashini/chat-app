@@ -10,6 +10,7 @@ import { connectDB } from './lib/db.js';
 
 import {app, server} from './lib/socket.js';
 dotenv.config();
+connectDB();
 const PORT = process.env.PORT || 5002;
 
 app.use(cors({
@@ -25,7 +26,6 @@ app.use(cookieParser());
 
 server.listen(PORT, () => {
     console.log('Server is running on PORT: '+ PORT);
-    connectDB();
 });
 // Routes
 app.use("/api/auth", authRoutes);
