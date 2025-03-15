@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useChatStore } from '../store/useChatStore';  // Adjust the path to your store
+import { useChatStore } from '../store/useChatStore';  
 import { useAuthStore } from "../store/useAuthStore";
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
