@@ -12,7 +12,7 @@ export const signup = async (req, res) => {
             return res.status(400).json({message: "All fields are required"});
         }
         //hash password
-        if (password.length < 8) {
+        if (password.length < 6) {
             return res.status(400).json({message: "Password must be at least 8 characters long"});
         }
         const user = await User.findOne({email})
@@ -66,16 +66,14 @@ export const login = async (req, res) => {
             return res.status(400).json({message: "Invalid credentials"});
         }
 
-        // Generate the token
         const token = generateToken(user._id, res); 
 
-        // Send the token along with user details
         res.status(200).json({
             _id: user._id,
             fullname: user.fullname,
             email: user.email,
             profilePic: user.profilePic,
-            token: token, // Include the token in the response
+            token: token, 
         });
         
     } catch (error) {
