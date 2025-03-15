@@ -8,14 +8,14 @@ import { formatMessageTime } from "../lib/utils";
 
 const ChatContainer = () => {
   const {
-    messages = [], // Defaulting to an empty array to prevent undefined errors
+    messages = [], 
     getMessages,
     isMessagesLoading,
     selectedUser,
     subscribeToMessages,
     unsubscribeFromMessages,
   } = useChatStore();
-  console.log("Messages in ChatContainer:", messages); // Debugging log
+  console.log("Messages in ChatContainer:", messages); 
 
   const { authUser } = useAuthStore();
   const messageEndRef = useRef(null);

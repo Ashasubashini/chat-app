@@ -2,13 +2,13 @@ import main from '../assets/main.png';
 
 const AuthImagePattern = ({ title, subtitle }) => {
     return (
-        <div className='hidden lg:flex items-center justify-center bg-base-200 p-12 text-white'>
+        <div >
             <div className='max-w-md text-center relative'>
                 <div className='grid grid-cols-3 gap-3 mb-8 relative'>
                     {[...Array(9)].map((_, i) => (
                         <div
                             key={i}
-                            className={`aspect-square rounded-2xl bg-gradient-to-br from-gray-500 to-gray-700 ${
+                            className={`aspect-square rounded-2xl  bg-gradient-to-br from-blue-400 to-blue-600 ${
                                 i % 2 === 0 ? "animate-pulse" : ""
                             }`}
                         />
