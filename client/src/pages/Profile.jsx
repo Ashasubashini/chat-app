@@ -53,11 +53,12 @@ const Profile = () => {
           {/* Avatar upload section */}
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
-              <img
-                src={selectedImg || authUser.profilePic || avatar} // Use avatar import here
-                alt="Profile"
-                className="size-32 rounded-full object-cover border-4"
-              />
+            <img
+              src={selectedImg || authUser?.profilePic || avatar} // Use avatar import here
+              alt="Profile"
+              className="size-32 rounded-full object-cover border-4"
+            />
+
               <label
                 htmlFor="avatar-upload"
                 className={`absolute bottom-0 right-0 hover:scale-105 p-2 rounded-full cursor-pointer transition-all duration-200 ${
