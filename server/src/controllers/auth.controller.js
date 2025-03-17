@@ -5,6 +5,7 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 
 export const signup = async (req, res) => {
+    console.log(req);
     const {fullname, email, password} = req.body;
     try {
         if (!fullname || !email || !password) {
@@ -49,6 +50,7 @@ export const signup = async (req, res) => {
 }
 
 export const login = async (req, res) => {
+    console.log(req);
     const {email, password} = req.body;
     try {
         const user = await User.findOne({email});
@@ -79,6 +81,7 @@ export const login = async (req, res) => {
 }
 
 export const logout = (req, res) => {
+    console.log(req);
     try {
         // No need to clear cookies since we're using token auth
         res.status(200).json({message: "Logged out successfully"});
@@ -109,6 +112,7 @@ export const updateProfile = async (req, res) => {
 }
 
 export const checkAuth = (req, res) => {
+    console.log(req);
     try {
         res.status(200).json(req.user);
     } catch (error) {
