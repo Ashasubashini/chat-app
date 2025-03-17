@@ -25,6 +25,7 @@ export const useAuthStore = create((set, get) => ({
         
         try {
             const res = await axiosInstance.get('auth/check');
+            console.log(res);
             set({authUser: res.data});
             get().connectSocket();
         } catch (error) {
@@ -39,7 +40,7 @@ export const useAuthStore = create((set, get) => ({
         set({ isSignedIn: true });
         try {
             const res = await axiosInstance.post("auth/signup", data);
-            
+            console.log(res);
             if (res.data.token) {
                 localStorage.setItem("authToken", res.data.token);
                 // Update axios headers for subsequent requests
@@ -62,8 +63,7 @@ export const useAuthStore = create((set, get) => ({
         
         try {
             const res = await axiosInstance.post("auth/login", data);
-            console.log("Login API Response:", res.data);
-            
+            console.log(res);            
             if (res.data.token) {
                 localStorage.setItem("authToken", res.data.token);
                 // Update axios headers for subsequent requests
@@ -91,14 +91,19 @@ export const useAuthStore = create((set, get) => ({
     
     logout: async() => {
         try {
-            await axiosInstance.post("/auth/logout");
-            // Remove token from localStorage and axios headers
-            localStorage.removeItem("authToken");
-            delete axiosInstance.defaults.headers.common['Authorization'];
+            await axiosInstance.post("/auth/logout")
+                .then((res) => {
+                    console.log(res);
+                    // Remove token from localStorage and axios headers
+                    localStorage.removeItem("authToken");
+                    delete axiosInstance.defaults.headers.common['Authorization'];
+                    
+                    set({ authUser: null });
+                    toast.success("Logged out successfully");
+                    get().disconnectSocket();
+                })
+                .catch(err => console.error(err));
             
-            set({ authUser: null });
-            toast.success("Logged out successfully");
-            get().disconnectSocket();
         } catch (error) {
             toast.error(error.response.data.message)
         }
